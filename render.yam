@@ -1,0 +1,17 @@
+# Coder Service
+services:
+  - type: web
+    name: coder
+    env: docker
+    autoDeploy: false
+    plan: starter
+    rootDir: render
+    envVars:
+      - key: CODER_PG_CONNECTION_URL
+        fromDatabase:
+          name: coder
+          property: connectionString
+# Postgres Database
+databases:
+  - name: coder
+    postgresMajorVersion: 15
